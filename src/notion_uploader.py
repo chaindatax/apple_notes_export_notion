@@ -108,6 +108,7 @@ def create_database_entry(
     title: str,
     blocks: list[dict],
     token: str,
+    modification_date=None,
     extra_properties: Optional[dict] = None,
 ) -> str:
     """
@@ -118,6 +119,7 @@ def create_database_entry(
         title: Titre de la page (propriété Name/title)
         blocks: Liste de blocs Notion à ajouter comme contenu
         token: Token d'intégration Notion
+        modification_date: datetime de dernière modification (optionnel) → propriété 'date'
         extra_properties: Propriétés supplémentaires à définir (optionnel)
 
     Returns:
@@ -129,6 +131,12 @@ def create_database_entry(
             "title": [{"text": {"content": title}}]
         }
     }
+
+    if modification_date is not None:
+        properties["date"] = {
+            "date": {"start": modification_date.isoformat()}
+        }
+
     if extra_properties:
         properties.update(extra_properties)
 

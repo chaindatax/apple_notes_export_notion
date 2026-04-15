@@ -109,6 +109,7 @@ def main():
                 title=note.title,
                 blocks=blocks,
                 token=token,
+                modification_date=note.modification_date,
             )
             success += 1
 
