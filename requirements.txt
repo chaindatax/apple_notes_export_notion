@@ -1,0 +1,6 @@
+apple-notes-parser
+notion-client
+beautifulsoup4
+python-dotenv
+requests
+lxml
